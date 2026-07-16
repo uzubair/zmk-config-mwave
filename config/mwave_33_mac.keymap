@@ -9,6 +9,10 @@
 #include <behaviors/stp_indicators.dtsi>
 #include "studio-macros.dtsi"
 
+&sk {
+    release-after-ms = <1000>;
+};
+
 / {
     #include "mwave_prim.dtsi"
 
@@ -21,10 +25,6 @@
             bindings = <&kp>, <&kp>;
             display-name = "Home Row Mod Tap";
         };
-    };
-
-    &sk {
-        release-after-ms = <1000>;
     };
 
     keymap {
