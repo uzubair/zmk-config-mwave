@@ -17,3 +17,39 @@ Kinesis does not officially support installing custom firmware on this device an
 
 All other files in the [config/](config/) folder should not be edited. They contain crucial configuration information for the functionality of the device.
 
+## Flashing Firmware
+
+After pushing changes to `main`, GitHub Actions builds the firmware automatically. Download the `firmware` artifact from the latest Actions run.
+
+**The file to flash for the Mac layout is `ansi-mac.uf2`.**
+
+### Steps
+
+1. Double-press the reset button on the keyboard — a `MWAVE` drive will appear on your Mac.
+2. Copy the firmware file to the drive:
+   ```
+   cp ~/Downloads/firmware/ansi-mac.uf2 /Volumes/MWAVE/
+   ```
+3. The keyboard reboots automatically. The "disk not ejected properly" warning is expected — ignore it.
+
+### Keys not working after flashing?
+
+ZMK Studio stores keymap edits persistently in flash. These stored settings override the compiled firmware even after reflashing. To fix:
+
+1. Double-press reset to enter bootloader.
+2. Flash the settings reset firmware first:
+   ```
+   cp ~/Downloads/firmware/ansi-settings-reset.uf2 /Volumes/MWAVE/
+   ```
+3. Double-press reset again when the keyboard reboots.
+4. Flash the mac firmware:
+   ```
+   cp ~/Downloads/firmware/ansi-mac.uf2 /Volumes/MWAVE/
+   ```
+
+This clears all stored ZMK settings and loads the compiled keymap from scratch.
+
+## Layer Reference
+
+See [docs/mwave_33_mac_layers.md](docs/mwave_33_mac_layers.md) for a full breakdown of every layer, key binding, and behavior.
+
