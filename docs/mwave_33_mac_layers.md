@@ -7,10 +7,10 @@ Source: `config/mwave_33_mac.keymap`
 | # | Name | Access |
 | --- | --- | --- |
 | 0 | Base | Default |
-| 1 | Fn | `To Fn` key (top-right) |
+| 1 | Fn | `To Fn` key (top-right) or `lsl 1` (tap=one-shot, hold=momentary) |
 | 2 | Blue | Activated externally (blue LED) |
 | 3 | Green | Activated externally (green LED) |
-| 4 | Symbols | `&sl 4` from right spacebar on Base |
+| 4 | Symbols | `lsl 4` (tap=one-shot, hold=momentary) |
 
 Keys marked **none** are explicitly disabled on that layer and produce nothing.
 
@@ -20,25 +20,24 @@ Keys marked **none** are explicitly disabled on that layer and produce nothing.
 
 | Area | Keys |
 | --- | --- |
-| Top row | `Esc`, `F1`, `F2`, `F3`, `F4`, `F5`, `F6`, `F7`, `F8`, `F9`, `F10`, `F11`, `F12`, `Home`, `End`, `Insert`, `To Fn` |
+| Top row | `Esc`, `F1`–`F12`, `Home`, `End`, `Insert`, `To Fn` |
 | Number row | `` ` ``, `1`–`0`, `-`, `=`, `Bksp` |
 | Q row | `Tab`, `Q`, `W`, `E`, `R`, `T`, `Y`, `U`, `I`, `O`, `P`, `[`, `]`, `\`, `Del` |
-| Home row | `Hyper sticky` (Caps position), `A`/Ctrl, `S`/Shift, `D`/Alt, `F`, `G`, `H`, `J`, `K`/Alt, `L`/Shift, `;`/Ctrl, `'`, `Enter`, `PgUp` |
-| Bottom row | `Left Shift sticky`, `Z`, `X`, `C`, `V`, `B`, `N`, `M`, `,`, `.`, `/`, `Right Shift`, `Up`, `PgDn` |
-| Bottom nav | `Left Ctrl sticky`, `Left Alt sticky`, `Left Cmd sticky`, `Space`, `Symbols (one-shot)`, `Right Cmd`, `Meh sticky`, `Right Ctrl`, `Left`, `Down`, `Right` |
+| Home row | `Hyper sticky`, `A`/Ctrl, `S`/Shift, `D`/Alt, `F`, `G`, `H`, `J`, `K`/Alt, `L`/Shift, `;`/Ctrl, `'`, `Enter`, `PgUp` |
+| Bottom row | `Left Shift sticky`, `Z`, `X`, `C`, `V`/Meh, `B`, `N`, `M`/Meh, `,`, `.`, `/`, `Right Shift`, `Up`, `PgDn` |
+| Bottom nav | `Left Ctrl sticky`, `Left Alt sticky`, `Left Cmd sticky`, `Space`, `Right Space`/Cmd+Space, `Symbols lsl`, `Fn lsl`, `Right Ctrl`, `Left`, `Down`, `Right` |
 
-### Sticky Modifiers (base layer, 1000 ms)
+### Sticky Modifiers (1000 ms)
 
 | Physical key | Output |
 | --- | --- |
-| Caps Lock position | `Hyper` — `Cmd+Shift+Alt+Ctrl` |
-| Left Shift | `Left Shift` |
-| Left Ctrl | `Left Ctrl` |
-| Left Alt | `Left Alt` |
-| Left Cmd | `Left Cmd` |
-| Right Alt position | `Meh` — `Ctrl+Shift+Alt` |
+| Caps Lock position | `Hyper` — `Cmd+Shift+Alt+Ctrl` (sticky) |
+| Left Shift | `Left Shift` (sticky) |
+| Left Ctrl | `Left Ctrl` (sticky) |
+| Left Alt | `Left Alt` (sticky) |
+| Left Cmd | `Left Cmd` (sticky) |
 
-### Home Row Hold-Tap (tap-preferred, 200 ms)
+### Home Row Hold-Tap — `hmt` (tap-preferred, 200 ms)
 
 | Key | Tap | Hold |
 | --- | --- | --- |
@@ -49,11 +48,26 @@ Keys marked **none** are explicitly disabled on that layer and produce nothing.
 | `L` | `L` | `Left Shift` |
 | `;` | `;` | `Left Ctrl` |
 
+### Other Hold-Tap Keys — `hmt` (tap-preferred, 200 ms)
+
+| Key | Tap | Hold |
+| --- | --- | --- |
+| `V` | `V` | `Meh` — `Ctrl+Shift+Alt` |
+| `M` | `M` | `Meh` — `Ctrl+Shift+Alt` |
+| Right Space | `Ctrl+Space` | `Cmd+Space` |
+
+### Layer Access Keys — `lsl` (tap-preferred, 200 ms)
+
+| Physical key | Tap | Hold |
+| --- | --- | --- |
+| ralt position | One-shot Symbols (layer 4) | Momentary Symbols (layer 4) |
+| beside ralt | One-shot Fn (layer 1) | Momentary Fn (layer 1) |
+
 ---
 
 ## Layer 1: Fn
 
-Activated by the `To Fn` key (top-right on Base). Return to Base with `To Base` (same position).
+Activated by `To Fn` (top-right on Base) or via `lsl 1` key. Return to Base with `To Base` (same position).
 
 | Area | Active keys | Rest |
 | --- | --- | --- |
@@ -80,7 +94,7 @@ Activated by the `To Fn` key (top-right on Base). Return to Base with `To Base` 
 
 ## Layer 3: Green
 
-Used for left-alt symbol shortcuts (likely app-specific bindings).
+Used for left-alt symbol shortcuts (app-specific bindings).
 
 | Area | Active keys | Rest |
 | --- | --- | --- |
@@ -92,15 +106,37 @@ Used for left-alt symbol shortcuts (likely app-specific bindings).
 
 ---
 
-## Layers 4–6: Symbols / Purple / Cyan / Yellow
+## Layer 4: Symbols
 
-Reserved. Layer 4 (Symbols) is accessible via `&sl 4` from the right spacebar on Base but has no bindings defined yet.
+Accessed via the `lsl 4` key (tap=one-shot, hold=momentary). Only the QWERTY section (Q–P, A–;, Z–/) has active keys, mirroring the Voyager symbol layer layout.
+
+```
+Q   W   E   R   T       Y   U   I   O   P
+!   @   #   )   $       `   (   -   +   \
+
+A   S   D   F   G       H   J   K   L   ;
+~   /   ^   }   =       '   {   -   *   :
+
+Z   X   C   V   B       N   M   ,   .   /
+_   |   >   ]   &       "   [   <   %   ?
+```
+
+> Z (bottom-left) is `none` — no symbol assigned there.
+
+---
+
+## Layers 5–7: Purple / Cyan / Yellow
+
+Reserved, no bindings defined.
 
 ---
 
 ## Notes
 
-- `&none` on any layer means the key is explicitly disabled — pressing it does nothing.
-- `&sk` keys are sticky: tap once, the modifier applies to the next keypress only (1000 ms window).
-- `&sl 4` is a one-shot layer: active for one keypress then returns to Base.
-- `&hmt` is hold-tap: tap for the character, hold for the modifier.
+- `&none` = key is explicitly disabled; pressing it does nothing.
+- `&sk` = sticky key: tap once, the modifier applies to the next keypress only (1000 ms window).
+- `&sl` = one-shot layer: active for one keypress then returns to Base.
+- `&mo` = momentary layer: active while the key is held.
+- `&lsl` = custom hold-tap: tap for one-shot layer (`&sl`), hold for momentary layer (`&mo`).
+- `&hmt` = custom hold-tap: tap for character, hold for modifier (tap-preferred, 200 ms).
+- `&to` = permanent layer switch (used for Base ↔ Fn toggle).
